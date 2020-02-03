@@ -7,3 +7,10 @@ before_install:
 
 script:
     - docker run -e CI=true yeasy/simple-web:test
+
+deploy:
+  provider: heroku
+  api_key:
+	  secure: $"HEROKU_API_TOKEN"
+  on:
+	  branch: master
