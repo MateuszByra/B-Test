@@ -4,6 +4,9 @@ services:
 env:
   global:
     - SHA=$(git rev-parse HEAD)
+    
+before_install:
+  - sudo gem install bundler
 
 deploy:
     provider: heroku
