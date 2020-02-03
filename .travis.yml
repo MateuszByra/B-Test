@@ -6,9 +6,6 @@ services:
 before_install:
     - docker build -t yeasy/simple-web:test -t yeasy/simple-web:latest -f ./Dockerfile .
 
-#script:
-#    - docker run -e CI=true yeasy/simple-web:test
-
 deploy:
   provider: heroku
   api_key:
