@@ -1,11 +1,9 @@
-language: csharp
+sudo: required
 services:
-  - docker
+    - docker
 
-deploy:
-    provider: heroku
-    api_key:
-        secure: $"HEROKU_API_TOKEN"
-    before_deploy: bash ./before-deploy.sh
-    on:
-      branch: master
+before_install:
+    - docker build -t yeasy/simple-web:test -t yeasy/simple-web:latest -f ./Dockerfile .
+
+script:
+    - docker run -e CI=true yeasy/simple-web:test
