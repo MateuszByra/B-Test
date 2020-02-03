@@ -4,6 +4,7 @@ services:
     - docker
 
 before_install:
+    - sudo gem install travis
     - docker build -t yeasy/simple-web:test -t yeasy/simple-web:latest -f ./Dockerfile .
 
 before_deploy:
