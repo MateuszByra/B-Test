@@ -4,17 +4,7 @@ services:
 env:
   global:
     - SHA=$(git rev-parse HEAD)
-#before_install:
-    # - sudo snap install --classic heroku
-    # - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
-    # - heroku login -i 
 
-
-# deploy:
-#     provider: script
-#     script: bash ./deploy.sh
-#     on:
-#       branch: master
 deploy:
     provider: heroku
     api_key:
