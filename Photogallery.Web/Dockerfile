@@ -6,9 +6,7 @@ EXPOSE 8080
 
 FROM microsoft/dotnet:2.1-sdk AS build
 WORKDIR /src
-COPY . .
-
-WORKDIR /Photogallery.Web/Photogallery.Web
+COPY . ./
 RUN dotnet restore -nowarn:msb3202,nu1503
 RUN dotnet build --no-restore -c Release -o /app
 
