@@ -1,11 +1,11 @@
-echo $(docker inspect registry.heroku.com/${HEROKU_APP_NAME}/web --format {{.Id}})
+echo $(docker inspect registry.heroku.com/${HEROKU_APP_NAME}/web --format={{.Id}})
 
 curl -n -X PATCH https://api.heroku.com/apps/${HEROKU_APP_NAME}/formation \
   -d '{
   "updates": [
     {
       "type": "web",
-      "docker_image": "$(docker inspect registry.heroku.com/${HEROKU_APP_NAME}/web --format {{.Id}})"
+      "docker_image": "$(docker inspect registry.heroku.com/${HEROKU_APP_NAME}/web --format={{.Id}})"
     }
   ]
 }' \
