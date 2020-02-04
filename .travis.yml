@@ -5,7 +5,6 @@ services:
 env:
     global:
         - WEB_DOCKER_IMAGE_ID = $(docker inspect registry.heroku.com/b-photogallery/web --format{{.Id}})
-        - HEROKU_APP_NAME ="b-photogallery"
 
 before_install:
     - docker login --username=_ --password=${HEROKU_API_KEY} registry.heroku.com
