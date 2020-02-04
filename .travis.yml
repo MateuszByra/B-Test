@@ -5,4 +5,10 @@ services:
 
 before_install:
     - docker login --username=_ --password=${HEROKU_API_KEY} registry.heroku.com
-    - docker build -t yeasy/simple-web:test -t yeasy/simple-web:latest -f ./Dockerfile .
+    - docker build -t registry.heroku.com/b-photogallery/web -f ./Dockerfile .
+
+#script:
+# run tests in docker container.
+
+after_success:
+    - docker push registry.heroku.com/b-photogallery/web
