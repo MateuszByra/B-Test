@@ -2,13 +2,22 @@ language: generic
 sudo: required
 services:
     - docker
+env:
+    global:
+        - WEB_DOCKER_IMAGE_ID = docker inspect registry.heroku.com/b-photogallery/web --format{{.Id}}
+        - HEROKU_APP_NAME = b-photogallery
 
 before_install:
     - docker login --username=_ --password=${HEROKU_API_KEY} registry.heroku.com
-    - docker build -t registry.heroku.com/b-photogallery/web -f ./Dockerfile .
+    - docker build -t registry.heroku.com/"$HEROKU_APP_NAME"/web -f ./Dockerfile .
 
 #script:
 # run tests in docker container.
+script:
+    - docker push regstry.heroku.com/"$HEROKU_APP_NAME"/web
 
-after_success:
-    - docker push registry.heroku.com/b-photogallery/web
+deploy:
+    provider: script
+    script: bash ./deploy.sh
+    on:
+        branch: master
