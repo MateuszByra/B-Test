@@ -12,8 +12,8 @@ before_install:
 #script:
 # run tests in docker container.
 script:
-    - docker build -t registry.heroku.com/${HEROKU_APP_NAME}/web -f ./Dockerfile .
-    - docker push regstry.heroku.com/${HEROKU_APP_NAME}/web
+    - docker build -t registry.heroku.com/$"HEROKU_APP_NAME"/web -f ./Dockerfile .
+    - docker push registry.heroku.com/$"HEROKU_APP_NAME"/web
 
 deploy:
     provider: script
