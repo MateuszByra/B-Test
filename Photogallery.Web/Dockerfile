@@ -1,7 +1,7 @@
 FROM microsoft/dotnet:2.1-aspnetcore-runtime AS base
 
 WORKDIR /app
-ENV ASPNETCORE_URLS http://+:${PORT}
+#ENV ASPNETCORE_URLS http://+:${PORT}
 #EXPOSE 8080
 
 FROM microsoft/dotnet:2.1-sdk AS build
@@ -16,5 +16,5 @@ RUN dotnet publish --no-restore -c Release -o /app
 FROM base AS final
 WORKDIR /app
 COPY --from=publish /app .
-#CMD ["dotnet", "Photogallery.Web.dll"]
-ENTRYPOINT ["dotnet", "Photogallery.Web.dll"]
+CMD ["dotnet", "Photogallery.Web.dll"]
+#ENTRYPOINT ["dotnet", "Photogallery.Web.dll"]
