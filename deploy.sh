@@ -1,6 +1,4 @@
-docker login --username=_ --password=${HEROKU_API_KEY} registry.heroku.com
-
-echo test
+echo $(docker inspect registry.heroku.com/${HEROKU_APP_NAME}/web --format{{.Id}})
 
 curl -n -X PATCH https://api.heroku.com/apps/${HEROKU_APP_NAME}/formation \
   -d '{
