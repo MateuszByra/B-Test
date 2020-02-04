@@ -9,7 +9,7 @@ before_install:
 #script:
 # run tests in docker container.
 script:
-    - docker build -t registry.heroku.com/${HEROKU_APP_NAME}/web -f ./Dockerfile .
+    - docker build -t registry.heroku.com/${HEROKU_APP_NAME}/web -f ./Photogallery.Web/Dockerfile ./Photogallery.Web
     - docker push registry.heroku.com/${HEROKU_APP_NAME}/web
 
 deploy:
