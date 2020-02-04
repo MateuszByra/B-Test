@@ -1,5 +1,5 @@
 echo $(docker inspect registry.heroku.com/${HEROKU_APP_NAME}/web --format={{.Id}})
-WEB_DOCKER_IMAGE_ID=$(docker inspect hull-connectors --format={{.Id}})
+WEB_DOCKER_IMAGE_ID=$(docker inspect registry.heroku.com/${HEROKU_APP_NAME}/web --format={{.Id}})
 echo "WEB_DOCKER_IMAGE_ID=$WEB_DOCKER_IMAGE_ID"
 
 curl -n -X PATCH https://api.heroku.com/apps/${HEROKU_APP_NAME}/formation \
